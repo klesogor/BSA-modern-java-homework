@@ -10,7 +10,8 @@ import com.binary_studio.fleet_commander.core.subsystems.contract.DefenciveSubsy
 public final class DockedShip implements ModularVessel {
 
 	public static DockedShip construct(String name, PositiveInteger shieldHP, PositiveInteger hullHP,
-			PositiveInteger powergridOutput, PositiveInteger capacitorAmount, PositiveInteger capacitorRechargeRate) {
+			PositiveInteger powergridOutput, PositiveInteger capacitorAmount, PositiveInteger capacitorRechargeRate,
+			PositiveInteger speed, PositiveInteger size) {
 		// TODO: Ваш код здесь :)
 		return null;
 	}

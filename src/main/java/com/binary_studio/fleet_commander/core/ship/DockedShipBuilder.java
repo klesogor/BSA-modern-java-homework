@@ -16,8 +16,16 @@ public final class DockedShipBuilder {
 
 	private PositiveInteger pg;
 
+	private PositiveInteger speed;
+
+	private PositiveInteger size;
+
 	public static DockedShipBuilder named(String name) {
 		var builder = new DockedShipBuilder();
+
+		builder.speed = PositiveInteger.of(1);
+		builder.speed = PositiveInteger.of(1);
+
 		builder.name = name;
 
 		return builder;
@@ -48,9 +56,19 @@ public final class DockedShipBuilder {
 		return this;
 	}
 
+	public DockedShipBuilder size(Integer size) {
+		this.size = PositiveInteger.of(size);
+		return this;
+	}
+
+	public DockedShipBuilder speed(Integer speed) {
+		this.size = PositiveInteger.of(speed);
+		return this;
+	}
+
 	public DockedShip construct() {
 		return DockedShip.construct(this.name, this.shieldHP, this.hullHP, this.pg, this.capacitor,
-				this.capacitorRegeneration);
+				this.capacitorRegeneration, this.speed, this.size);
 	}
 
 }
