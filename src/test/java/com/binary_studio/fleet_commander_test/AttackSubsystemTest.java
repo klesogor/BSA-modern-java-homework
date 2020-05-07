@@ -89,8 +89,8 @@ class AttackSubsystemTest {
 	}
 
 	@Test
-	@DisplayName("Should apply one damage when target size is zero and optimal size is more than zero")
-	public void testShouldApplyOneDamage() {
+	@DisplayName("Should apply zero damage by size formulae")
+	public void testShouldApplyZeroDamage() {
 		String name = "Mock weapon";
 		Integer optimalSize = 50;
 		Integer optimalTargetSpeed = 150;
@@ -102,7 +102,7 @@ class AttackSubsystemTest {
 
 		PositiveInteger attackResult = weapon.attack(target);
 
-		assertEquals(PositiveInteger.of(1), attackResult);
+		assertEquals(PositiveInteger.of(0), attackResult);
 	}
 
 }
