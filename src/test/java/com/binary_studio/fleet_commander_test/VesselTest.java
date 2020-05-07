@@ -140,7 +140,7 @@ public class VesselTest {
 			ship.startTurn();
 			Optional<AttackAction> attack = ship.attack(target);
 			assertTrue(attack.isPresent(), "Should be able to attack with full cap");
-			assertEquals(10, attack.get().damage, "Should deal max damage");
+			assertEquals(10, attack.get().damage.value(), "Should deal max damage");
 			assertEquals("ISS Overcharge", attack.get().attacker.getName(), "Should have correct attacker");
 			assertEquals("ISS Unlucky", attack.get().target.getName(), "Should have correct target");
 			assertEquals("Test Arm", attack.get().weapon.getName(), "Should attack with right weapon");
@@ -154,7 +154,7 @@ public class VesselTest {
 			ship.startTurn();
 			attack = ship.attack(target);
 			assertTrue(attack.isPresent(), "Should be able to attack after cap regen");
-			assertEquals(10, attack.get().damage, "Should deal max damage");
+			assertEquals(10, attack.get().damage.value(), "Should deal max damage");
 			assertEquals("ISS Overcharge", attack.get().attacker.getName(), "Should have correct attacker");
 			assertEquals("ISS Unlucky", attack.get().target.getName(), "Should have correct target");
 			assertEquals("Test Arm", attack.get().weapon.getName(), "Should attack with right weapon");
@@ -192,11 +192,11 @@ public class VesselTest {
 			ship.regenerate();
 			AttackResult.DamageRecived res = (AttackResult.DamageRecived) ship
 					.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
-			assertEquals(res.damage.value(), 50, "Should reduce impact correctly");
+			assertEquals(50, res.damage.value(), "Should reduce impact correctly");
 			Optional<RegenerateAction> regen = ship.regenerate();
 			assertTrue(regen.isPresent(), "Should regenerate");
-			assertEquals(20, regen.get().hullHPRegenerated, "Should regen hull correctly");
-			assertEquals(10, regen.get().shieldHPRegenerated, "Should regen shield correctly");
+			assertEquals(20, regen.get().hullHPRegenerated.value(), "Should regen hull correctly");
+			assertEquals(10, regen.get().shieldHPRegenerated.value(), "Should regen shield correctly");
 			ship.endTurn();
 
 			ship.startTurn();
