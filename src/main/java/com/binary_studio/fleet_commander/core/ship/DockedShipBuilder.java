@@ -24,7 +24,7 @@ public final class DockedShipBuilder {
 		var builder = new DockedShipBuilder();
 
 		builder.speed = PositiveInteger.of(1);
-		builder.speed = PositiveInteger.of(1);
+		builder.size = PositiveInteger.of(1);
 
 		builder.name = name;
 
