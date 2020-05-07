@@ -209,7 +209,7 @@ public class VesselTest {
 
 			AttackResult finalBlow = ship
 					.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
-			assertTrue(finalBlow instanceof AttackResult.Destroyed, "Ship should be destroyed exactly in 6 turns");
+			assertTrue(finalBlow instanceof AttackResult.Destroyed, "Ship should be destroyed exactly in 5 attacks");
 			ship.endTurn();
 
 		}
