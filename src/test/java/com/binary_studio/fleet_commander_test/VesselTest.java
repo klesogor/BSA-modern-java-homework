@@ -205,7 +205,6 @@ public class VesselTest {
 			ship.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
 			ship.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
 			ship.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
-			ship.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
 
 			AttackResult finalBlow = ship
 					.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
