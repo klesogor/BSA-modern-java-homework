@@ -62,7 +62,7 @@ public final class DockedShipBuilder {
 	}
 
 	public DockedShipBuilder speed(Integer speed) {
-		this.size = PositiveInteger.of(speed);
+		this.speed = PositiveInteger.of(speed);
 		return this;
 	}
 
