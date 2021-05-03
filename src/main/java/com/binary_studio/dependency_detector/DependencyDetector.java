@@ -1,9 +1,14 @@
 package com.binary_studio.dependency_detector;
 
-public class DependencyDetector {
-    public static boolean canBuild(DependencyList libraries){
-        //TODO: Implement
+public final class DependencyDetector {
 
-        return false;
-    }
+	private DependencyDetector() {
+	}
+
+	public static boolean canBuild(DependencyList libraries) {
+		// TODO: Implement
+
+		return false;
+	}
+
 }

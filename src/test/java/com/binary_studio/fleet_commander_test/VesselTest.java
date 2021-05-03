@@ -193,7 +193,7 @@ public class VesselTest {
 			assertTrue(emptyRegen.isPresent(), "Should regenerate");
 			assertEquals(0, emptyRegen.get().hullHPRegenerated.value(), "Should regen hull correctly");
 			assertEquals(0, emptyRegen.get().shieldHPRegenerated.value(), "Should regen shield correctly");
-			
+
 			AttackResult.DamageRecived res = (AttackResult.DamageRecived) ship
 					.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
 			assertEquals(50, res.damage.value(), "Should reduce impact correctly");
