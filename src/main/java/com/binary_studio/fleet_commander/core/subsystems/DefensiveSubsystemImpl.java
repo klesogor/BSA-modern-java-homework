@@ -3,13 +3,13 @@ package com.binary_studio.fleet_commander.core.subsystems;
 import com.binary_studio.fleet_commander.core.actions.attack.AttackAction;
 import com.binary_studio.fleet_commander.core.actions.defence.RegenerateAction;
 import com.binary_studio.fleet_commander.core.common.PositiveInteger;
-import com.binary_studio.fleet_commander.core.subsystems.contract.DefenciveSubsystem;
+import com.binary_studio.fleet_commander.core.subsystems.contract.DefensiveSubsystem;
 
-public final class DefenciveSubsystemImpl implements DefenciveSubsystem {
+public final class DefensiveSubsystemImpl implements DefensiveSubsystem {
 
-	public static DefenciveSubsystemImpl construct(String name, PositiveInteger powergridConsumption,
-			PositiveInteger capacitorConsumption, PositiveInteger impactReductionPercent,
-			PositiveInteger shieldRegeneration, PositiveInteger hullRegeneration) throws IllegalArgumentException {
+	public static DefensiveSubsystemImpl construct(String name, PositiveInteger powerGridConsumption,
+												   PositiveInteger capacitorConsumption, PositiveInteger impactReductionPercent,
+												   PositiveInteger shieldRegeneration, PositiveInteger hullRegeneration) throws IllegalArgumentException {
 		// TODO: Ваш код здесь :)
 		return null;
 	}

@@ -6,15 +6,15 @@ import com.binary_studio.fleet_commander.core.actions.attack.AttackAction;
 import com.binary_studio.fleet_commander.core.actions.defence.AttackResult;
 import com.binary_studio.fleet_commander.core.actions.defence.RegenerateAction;
 import com.binary_studio.fleet_commander.core.common.PositiveInteger;
-import com.binary_studio.fleet_commander.core.exceptions.InsufficientPowergridException;
+import com.binary_studio.fleet_commander.core.exceptions.InsufficientPowerGridException;
 import com.binary_studio.fleet_commander.core.exceptions.NotAllSubsystemsFitted;
 import com.binary_studio.fleet_commander.core.ship.CombatReadyShip;
 import com.binary_studio.fleet_commander.core.ship.DockedShip;
 import com.binary_studio.fleet_commander.core.ship.DockedShipBuilder;
 import com.binary_studio.fleet_commander.core.subsystems.AttackSubsystemBuilder;
 import com.binary_studio.fleet_commander.core.subsystems.AttackSubsystemImpl;
-import com.binary_studio.fleet_commander.core.subsystems.DefenciveSubsystemBuilder;
-import com.binary_studio.fleet_commander.core.subsystems.DefenciveSubsystemImpl;
+import com.binary_studio.fleet_commander.core.subsystems.DefensiveSubsystemBuilder;
+import com.binary_studio.fleet_commander.core.subsystems.DefensiveSubsystemImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,17 +31,17 @@ public class VesselTest {
 		AttackSubsystemBuilder baseWeapon = AttackSubsystemBuilder.named("Mock weapon").capacitorUsage(1).damage(1)
 				.optimalSpeed(1).optimalSize(1).pg(100);
 
-		DefenciveSubsystemBuilder baseDefence = DefenciveSubsystemBuilder.named("Mock def").capacitorUsage(1)
+		DefensiveSubsystemBuilder baseDefence = DefensiveSubsystemBuilder.named("Mock def").capacitorUsage(1)
 				.shieldRegen(1).hullRegen(1).impactReduction(0).pg(100);
 		DockedShip vessel = baseShip.construct();
 
 		try {
 			vessel.fitDefensiveSubsystem(baseDefence.construct());
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should have enough capacity to fit only defencive");
 		}
-		assertThrows(InsufficientPowergridException.class, () -> vessel.fitAttackSubsystem(baseWeapon.construct()),
+		assertThrows(InsufficientPowerGridException.class, () -> vessel.fitAttackSubsystem(baseWeapon.construct()),
 				"Should not fit over power grid capacity");
 
 		DockedShip stableVessel = baseShip.pg(200).construct();
@@ -50,11 +50,11 @@ public class VesselTest {
 			stableVessel.fitDefensiveSubsystem(baseDefence.construct());
 			stableVessel.fitAttackSubsystem(baseWeapon.construct());
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should have enough capacity to fit both defencive");
 		}
 
-		assertThrows(InsufficientPowergridException.class,
+		assertThrows(InsufficientPowerGridException.class,
 				() -> stableVessel.fitDefensiveSubsystem(baseDefence.pg(101).construct()),
 				"Should not re-fit module over capacity");
 	}
@@ -69,13 +69,13 @@ public class VesselTest {
 		assertThrows(NotAllSubsystemsFitted.class, () -> vessel.undock(),
 				"Should not be able to undock without any module");
 
-		DefenciveSubsystemImpl defSub = DefenciveSubsystemBuilder.named("DefSys").pg(1).capacitorUsage(1).hullRegen(1)
+		DefensiveSubsystemImpl defSub = DefensiveSubsystemBuilder.named("DefSys").pg(1).capacitorUsage(1).hullRegen(1)
 				.impactReduction(1).shieldRegen(1).construct();
 
 		try {
 			vessel.fitDefensiveSubsystem(defSub);
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should fit defencive and attack subsystems");
 		}
 
@@ -85,7 +85,7 @@ public class VesselTest {
 		try {
 			vessel.fitDefensiveSubsystem(null);
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should be able to unfit subsystems");
 		}
 
@@ -95,7 +95,7 @@ public class VesselTest {
 		try {
 			vessel.fitAttackSubsystem(attackSub);
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should fit defencive and attack subsystems");
 		}
 
@@ -105,7 +105,7 @@ public class VesselTest {
 		try {
 			vessel.fitDefensiveSubsystem(defSub);
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should be able to fit defencive system back");
 		}
 
@@ -127,10 +127,10 @@ public class VesselTest {
 		try {
 			vessel.fitAttackSubsystem(AttackSubsystemBuilder.named("Test Arm").pg(1).damage(10).capacitorUsage(100)
 					.optimalSpeed(10).optimalSize(10).construct());
-			vessel.fitDefensiveSubsystem(DefenciveSubsystemBuilder.named("Test Shield").pg(1).capacitorUsage(10)
+			vessel.fitDefensiveSubsystem(DefensiveSubsystemBuilder.named("Test Shield").pg(1).capacitorUsage(10)
 					.shieldRegen(10).hullRegen(20).impactReduction(50).construct());
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should fit attack and defence subsystem");
 		}
 
@@ -177,10 +177,10 @@ public class VesselTest {
 		try {
 			vessel.fitAttackSubsystem(AttackSubsystemBuilder.named("Test Arm").pg(1).damage(10).capacitorUsage(100)
 					.optimalSpeed(10).optimalSize(10).construct());
-			vessel.fitDefensiveSubsystem(DefenciveSubsystemBuilder.named("Test Shield").pg(1).capacitorUsage(50)
+			vessel.fitDefensiveSubsystem(DefensiveSubsystemBuilder.named("Test Shield").pg(1).capacitorUsage(50)
 					.shieldRegen(10).hullRegen(20).impactReduction(50).construct());
 		}
-		catch (InsufficientPowergridException ex) {
+		catch (InsufficientPowerGridException ex) {
 			fail("Should fit attack and defence subsystem");
 		}
 
@@ -194,7 +194,7 @@ public class VesselTest {
 			assertEquals(0, emptyRegen.get().hullHPRegenerated.value(), "Should regen hull correctly");
 			assertEquals(0, emptyRegen.get().shieldHPRegenerated.value(), "Should regen shield correctly");
 
-			AttackResult.DamageRecived res = (AttackResult.DamageRecived) ship
+			AttackResult.DamageReceived res = (AttackResult.DamageReceived) ship
 					.applyAttack(new AttackAction(PositiveInteger.of(100), attacker, ship, weapon));
 			assertEquals(50, res.damage.value(), "Should reduce impact correctly");
 			Optional<RegenerateAction> regen = ship.regenerate();

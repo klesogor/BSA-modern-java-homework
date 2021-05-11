@@ -2,7 +2,7 @@ package com.binary_studio.fleet_commander.core.subsystems;
 
 import com.binary_studio.fleet_commander.core.common.PositiveInteger;
 
-public final class DefenciveSubsystemBuilder {
+public final class DefensiveSubsystemBuilder {
 
 	private String name;
 
@@ -16,40 +16,40 @@ public final class DefenciveSubsystemBuilder {
 
 	private PositiveInteger pgRequirement;
 
-	public static DefenciveSubsystemBuilder named(String name) {
-		var builder = new DefenciveSubsystemBuilder();
+	public static DefensiveSubsystemBuilder named(String name) {
+		var builder = new DefensiveSubsystemBuilder();
 		builder.name = name;
 
 		return builder;
 	}
 
-	public DefenciveSubsystemBuilder pg(Integer val) {
+	public DefensiveSubsystemBuilder pg(Integer val) {
 		this.pgRequirement = PositiveInteger.of(val);
 		return this;
 	}
 
-	public DefenciveSubsystemBuilder hullRegen(Integer val) {
+	public DefensiveSubsystemBuilder hullRegen(Integer val) {
 		this.hullRegen = PositiveInteger.of(val);
 		return this;
 	}
 
-	public DefenciveSubsystemBuilder shieldRegen(Integer val) {
+	public DefensiveSubsystemBuilder shieldRegen(Integer val) {
 		this.shieldRegen = PositiveInteger.of(val);
 		return this;
 	}
 
-	public DefenciveSubsystemBuilder impactReduction(Integer val) {
+	public DefensiveSubsystemBuilder impactReduction(Integer val) {
 		this.impactReduction = PositiveInteger.of(val);
 		return this;
 	}
 
-	public DefenciveSubsystemBuilder capacitorUsage(Integer val) {
+	public DefensiveSubsystemBuilder capacitorUsage(Integer val) {
 		this.capacitorUsage = PositiveInteger.of(val);
 		return this;
 	}
 
-	public DefenciveSubsystemImpl construct() {
-		return DefenciveSubsystemImpl.construct(this.name, this.pgRequirement, this.capacitorUsage,
+	public DefensiveSubsystemImpl construct() {
+		return DefensiveSubsystemImpl.construct(this.name, this.pgRequirement, this.capacitorUsage,
 				this.impactReduction, this.shieldRegen, this.hullRegen);
 	}
 

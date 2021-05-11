@@ -3,10 +3,10 @@ package com.binary_studio.fleet_commander.core.actions.defence;
 import com.binary_studio.fleet_commander.core.common.NamedEntity;
 import com.binary_studio.fleet_commander.core.common.PositiveInteger;
 
-//Destroyed | DamageRecived
+//Destroyed | DamageReceived
 public abstract class AttackResult {
 
-	public static final class DamageRecived extends AttackResult {
+	public static final class DamageReceived extends AttackResult {
 
 		public final NamedEntity weapon;
 
@@ -14,7 +14,7 @@ public abstract class AttackResult {
 
 		public final NamedEntity target;
 
-		public DamageRecived(NamedEntity weapon, PositiveInteger damage, NamedEntity target) {
+		public DamageReceived(NamedEntity weapon, PositiveInteger damage, NamedEntity target) {
 			super();
 			this.weapon = weapon;
 			this.damage = damage;

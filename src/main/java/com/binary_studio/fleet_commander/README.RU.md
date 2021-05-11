@@ -36,7 +36,7 @@ damage = baseDamage * min(sizeReductionModifier, speedReductionModifier)
 1. Ваша задача - имплементировать следующие классы:
   `com.binary_studio.fleet_commander.core.ship.DockedVessel`  
   `com.binary_studio.fleet_commander.core.ship.CombatReadyVessel`
-  `com.binary_studio.fleet_commander.core.subsystems.DefenciveSubsystemImpl`
+  `com.binary_studio.fleet_commander.core.subsystems.DefensiveSubsystemImpl`
   `com.binary_studio.fleet_commander.core.subsystems.AttackSubsystemImpl`
 2. Посмотрите исходники тестов, это поможет понять ожидаемое поведение  
 3. Нельзя изменять контракт существующих классов(сигнатуры методов), но изменять их реализацию можно и нужно. Так же вы можете создавать новые методы в уже существующих классах и интерфейсах или создавать новые классы и интерфейсы.
