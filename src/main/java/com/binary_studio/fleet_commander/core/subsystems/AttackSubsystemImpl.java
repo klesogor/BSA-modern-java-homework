@@ -6,7 +6,7 @@ import com.binary_studio.fleet_commander.core.subsystems.contract.AttackSubsyste
 
 public final class AttackSubsystemImpl implements AttackSubsystem {
 
-	public static AttackSubsystemImpl construct(String name, PositiveInteger powergridRequirments,
+	public static AttackSubsystemImpl construct(String name, PositiveInteger powerGridRequirements,
 			PositiveInteger capacitorConsumption, PositiveInteger optimalSpeed, PositiveInteger optimalSize,
 			PositiveInteger baseDamage) throws IllegalArgumentException {
 		// TODO: Ваш код здесь :)

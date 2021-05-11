@@ -3,8 +3,8 @@ package com.binary_studio.fleet_commander_test;
 import com.binary_studio.fleet_commander.core.actions.attack.AttackAction;
 import com.binary_studio.fleet_commander.core.actions.defence.RegenerateAction;
 import com.binary_studio.fleet_commander.core.common.PositiveInteger;
-import com.binary_studio.fleet_commander.core.subsystems.DefenciveSubsystemBuilder;
-import com.binary_studio.fleet_commander.core.subsystems.DefenciveSubsystemImpl;
+import com.binary_studio.fleet_commander.core.subsystems.DefensiveSubsystemBuilder;
+import com.binary_studio.fleet_commander.core.subsystems.DefensiveSubsystemImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ class DefenciveSubsystemTest {
 	@DisplayName("Should not create defensive with empty or missing name")
 	public void testShouldNotCreateWeaponWithoutName() {
 		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-				() -> DefenciveSubsystemImpl.construct("     ", PositiveInteger.of(10), PositiveInteger.of(15),
+				() -> DefensiveSubsystemImpl.construct("     ", PositiveInteger.of(10), PositiveInteger.of(15),
 						PositiveInteger.of(15), PositiveInteger.of(5), PositiveInteger.of(5)));
 
 		assertEquals(exception.getMessage(), "Name should be not null and not empty");
@@ -30,7 +30,7 @@ class DefenciveSubsystemTest {
 		Integer powerGridRequirments = 100;
 		Integer capacitorRequirments = 20;
 
-		DefenciveSubsystemImpl subsystem = DefenciveSubsystemBuilder.named(name).pg(powerGridRequirments)
+		DefensiveSubsystemImpl subsystem = DefensiveSubsystemBuilder.named(name).pg(powerGridRequirments)
 				.capacitorUsage(capacitorRequirments).impactReduction(0).hullRegen(0).shieldRegen(0).construct();
 
 		assertEquals(name, subsystem.getName(), "Names should be equal");
@@ -51,7 +51,7 @@ class DefenciveSubsystemTest {
 		PositiveInteger capacitorRequirments = PositiveInteger.of(20);
 		PositiveInteger damageReductionPercent = PositiveInteger.of(5);
 
-		DefenciveSubsystemImpl subsystem = DefenciveSubsystemImpl.construct(shieldName, powerGridRequirments,
+		DefensiveSubsystemImpl subsystem = DefensiveSubsystemImpl.construct(shieldName, powerGridRequirments,
 				capacitorRequirments, damageReductionPercent, PositiveInteger.of(10), PositiveInteger.of(5));
 		NamedMock weapon = new NamedMock(weaponName);
 		NamedMock attacker = new NamedMock(attackerName);
@@ -83,7 +83,7 @@ class DefenciveSubsystemTest {
 		PositiveInteger capacitorRequirments = PositiveInteger.of(20);
 		PositiveInteger damageReductionPercent = PositiveInteger.of(147);
 
-		DefenciveSubsystemImpl subsystem = DefenciveSubsystemImpl.construct(shieldName, powerGridRequirments,
+		DefensiveSubsystemImpl subsystem = DefensiveSubsystemImpl.construct(shieldName, powerGridRequirments,
 				capacitorRequirments, damageReductionPercent, PositiveInteger.of(10), PositiveInteger.of(5));
 		NamedMock weapon = new NamedMock(weaponName);
 		NamedMock attacker = new NamedMock(attackerName);
@@ -107,7 +107,7 @@ class DefenciveSubsystemTest {
 		PositiveInteger shieldRegen = PositiveInteger.of(11);
 		PositiveInteger hullRegen = PositiveInteger.of(12);
 
-		DefenciveSubsystemImpl subsystem = DefenciveSubsystemImpl.construct(name, powerGridRequirments,
+		DefensiveSubsystemImpl subsystem = DefensiveSubsystemImpl.construct(name, powerGridRequirments,
 				capacitorRequirments, PositiveInteger.of(0), shieldRegen, hullRegen);
 		RegenerateAction regen = subsystem.regenerate();
 
